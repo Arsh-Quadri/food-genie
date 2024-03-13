@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+  
+  .accordion-button {
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    border: 1px solid #7c7d91;
+    color: #E5E8EB;
+  }
+  
+  .accordion-content {
+    overflow: hidden;
+    transition: height 0.3s ease;
+    color: #7c7d91;
+  }
+  
+  .accordion-content.closed {
+    height: 0px;
+  }
+  .accordion-content.open{
+    height: 30px;
+  }
+  .rotate-180 {
+    transform: rotate(180deg);
+  }
+  .white-icon {
+    filter: invert(50%);
+  }
+  .bgimage{
+    background-image: url('https://image.slidesdocs.com/responsive-images/background/wind-hello-breakfast-good-morning-powerpoint-background_a1acf99cb7__960_540.jpg');
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .transtion {
+    height: 0.1px;
+    transition: height 0.5s ease-in-out;
+  }
+  .hset{
+    height: fit-content;
+  }
