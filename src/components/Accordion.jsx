@@ -1,18 +1,12 @@
 import { useState } from "react";
 import down from "../assets/down.png";
 
-const AccordionItem = ({ title, children }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleAccordion = () => {
-    setIsOpen(!isOpen);
-  };
-
+const AccordionItem = ({ title, children, isOpen, toggleAccordion }) => {
   return (
     <div className="accordion-item">
       <button
         type="button"
-        className="accordion-button rounded-lg p-3 text-left text-[18px] font-medium focus:outline-none`"
+        className="accordion-button rounded-lg p-3 text-left text-[18px] font-medium focus:outline-none"
         onClick={toggleAccordion}
       >
         <div className="flex justify-between items-center">
@@ -25,7 +19,7 @@ const AccordionItem = ({ title, children }) => {
           />
         </div>
         <div
-          className={`accordion-content text-[16px] font-[400]  ${
+          className={`accordion-content text-[16px] font-[400] ${
             isOpen ? "open" : "closed"
           }`}
         >
@@ -37,10 +31,21 @@ const AccordionItem = ({ title, children }) => {
 };
 
 const Accordion = ({ items }) => {
+  const [openItemIndex, setOpenItemIndex] = useState(null);
+
+  const toggleAccordion = (index) => {
+    setOpenItemIndex((prevIndex) => (prevIndex === index ? null : index));
+  };
+
   return (
     <div className="w-[80%] mt-5 space-y-4">
-      {items.map((item) => (
-        <AccordionItem key={item.title} title={item.title}>
+      {items.map((item, index) => (
+        <AccordionItem
+          key={item.title}
+          title={item.title}
+          isOpen={openItemIndex === index}
+          toggleAccordion={() => toggleAccordion(index)}
+        >
           {item.content}
         </AccordionItem>
       ))}

@@ -3,6 +3,7 @@ import { auth } from "../../backend/firebase";
 import { useState } from "react";
 import ham from "../assets/hamburger.png";
 import cross from "../assets/cross.png";
+import logo from "../assets/logo2.png";
 
 const Navbar = ({ user, setIsOnboardingCompleted }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,13 +21,13 @@ const Navbar = ({ user, setIsOnboardingCompleted }) => {
   };
   return (
     <>
-      <div className="w-full bg-[#121c24] flex justify-between items-center h-[65px] pr-10 border-b border-[#E5E8EB]">
+      <div className="w-full bg-[#121c24] flex justify-between items-center h-[65px] pr-10 border-b border-[#A7A7A7]">
         <div className="flex justify-center items-center gap-10">
           <Link
             to="/"
             className="logo text-xl pl-10 font-[500] cursor-pointer text-[#E5E8EB]"
           >
-            FoodGenie
+            <img src={logo} className="w-28  imgcolor" />
           </Link>
         </div>
         <div className="flex justify-center items-center font-[500] gap-5 text-[#E5E8EB]">

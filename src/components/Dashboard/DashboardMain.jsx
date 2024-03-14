@@ -220,7 +220,7 @@ const DashboardMain = ({ user, setRecipe }) => {
             {calories.bmi >= 18.5 && calories.bmi <= 25 && (
               <div className="">Normal</div>
             )}
-            {calories.bmi >= 26 && calories.bmi <= 30 && (
+            {calories.bmi > 25 && calories.bmi <= 30 && (
               <div className="text-red-300">Overweight</div>
             )}
             {calories.bmi >= 30 && <div className="text-red-500">Obesity</div>}
