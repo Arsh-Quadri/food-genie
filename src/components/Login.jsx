@@ -64,8 +64,8 @@ const Login = ({ isOnboardingCompleted }) => {
     }
   };
   return (
-    <div className="bg-[#121c24] w-full flex flex-col justify-center items-center relative ">
-      <div className="sm:w-[85%] md:w-[50%] lg:w-[34%] bg-[#23323d] shadow-lg shadow-black relative mt-8 mb-4 flex flex-col justify-center p-5 px-10 rounded-xl">
+    <div className=" w-full flex flex-col justify-center items-center relative bckimg ">
+      <div className="sm:w-[85%] md:w-[50%] lg:w-[34%] bg-[#23323d] shadow-lg shadow-black relative mt-8 mb-12 flex flex-col justify-center p-5 px-10 rounded-xl z-20 ">
         <h1 className="text-3xl font-[750] text-[#F5C754] relative py-5 left-0 text-left">
           Login or create an account
         </h1>
@@ -100,7 +100,7 @@ const Login = ({ isOnboardingCompleted }) => {
           Forgot password?
         </h1>
         <div
-          className="bg-[#F5C754] hover:bg-[#ddb348] font-[600] px-4 py-3 rounded-xl cursor-pointer  md:block text-center mt-3"
+          className="bg-[#F5C754] hover:bg-[#ddb348] font-[600] px-4 py-2 rounded-xl cursor-pointer  md:block text-center mt-3"
           onClick={(e) => handleSignIn(e)}
         >
           Log in

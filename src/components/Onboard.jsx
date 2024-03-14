@@ -47,12 +47,11 @@ const Onboard = ({ user }) => {
   };
 
   return (
-    <div className="bg-[#121c24] w-full h-full flex justify-center items-center">
-      <div className=" w-[27%] px-1 py-1 flex flex-col items-center justify-center ">
-        <h1 className="text-3xl text-[#E5E8EB] font-medium py-5">Onboarding</h1>
+    <div className="bg-[#121c24] w-full h-full flex justify-center items-center relative bckimg">
+      <div className=" w-[30%] px-1 py-1 flex flex-col items-center justify-center z-20 mt-8 mb-12  ">
         <form className="w-full" onSubmit={handleOnboardingSubmit}>
           <div className=" w-full flex flex-col justify-center items-center bg-[#23323d] rounded-xl shadow-lg shadow-black">
-            <div className=" flex flex-col justify-center  rounded-3xl px-2 py-2">
+            <div className="w-full flex flex-col justify-center  rounded-3xl px-8 py-2">
               <div className="mt-3 ">
                 <h1 className="text-lg text-[#E5E8EB] font-medium text-left ">
                   What's your primary goal?

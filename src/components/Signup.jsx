@@ -47,8 +47,8 @@ const Signup = ({ isOnboardingCompleted }) => {
     }
   };
   return (
-    <div className="bg-[#121c24] w-full flex flex-col justify-center items-center relative ">
-      <div className="sm:w-[85%] md:w-[50%] lg:w-[34%] relative mt-8 flex flex-col justify-center bg-[#23323d] shadow-lg shadow-black mb-4 p-5 px-10 rounded-xl">
+    <div className=" w-full flex flex-col justify-center items-center relative bckimg ">
+      <div className="sm:w-[85%] md:w-[50%] lg:w-[34%] relative mt-8 flex flex-col justify-center bg-[#23323d] shadow-lg shadow-black mb-12 p-5 px-10 z-20 rounded-xl ">
         <h1 className="text-3xl font-[750] text-[#F5C754] relative py-5 left-0 text-left">
           Create an account
         </h1>
@@ -82,7 +82,7 @@ const Signup = ({ isOnboardingCompleted }) => {
         </div>
         <button
           onClick={(e) => handleSubmit(e)}
-          className="bg-[#F5C754] hover:bg-[#ddb348] font-[600] px-4 py-3 rounded-xl cursor-pointer  md:block text-center mt-5"
+          className="bg-[#F5C754] hover:bg-[#ddb348] font-[600] px-4 py-2 rounded-xl cursor-pointer  md:block text-center mt-5"
         >
           Sign Up
         </button>

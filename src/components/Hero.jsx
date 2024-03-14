@@ -1,15 +1,40 @@
 // import { Link } from "react-router-dom";
-import hero from "../assets/Hero.png";
-import card from "../assets/card.png";
-import search from "../assets/search.png";
+import { Link } from "react-router-dom";
+import hero from "../assets/Hero.jpg";
+// import card from "../assets/card.png";
+import personalisedmealplan from "../assets/personalised.jpg";
+import cfi from "../assets/CFI.jpg";
+import iff from "../assets/IFF2.jpg";
+import chatbot from "../assets/chatbot.jpeg";
+import crs from "../assets/CRS2.jpg";
+import cmb from "../assets/CMB2.jpg";
 import Accordion from "./Accordion";
 
 const Hero = () => {
   const items = [
-    { title: "Item 1", content: "Content for item 1" },
-    { title: "Item 2", content: "Content for item 2" },
-    { title: "Item 3", content: "Content for item 3" },
-    { title: "Item 4", content: "Content for item 4" },
+    {
+      title: "What is FoodGenie and what does it do?",
+      content: `[Your App Name] is a food suggestion web app powered by AI. It helps you achieve health goals with personalized diet plans, shape improvement tools, nutritional guidance, and allergy-friendly options.`,
+    },
+    {
+      title: "How is FoodGenie different from other food suggestion apps?",
+      content: `Our app goes beyond basic calorie counting. It personalizes plans based on your goals, health conditions, and preferences. Unique features include shape-focused guidance with photo upload and meal analysis.
+    `,
+    },
+    {
+      title: "How does the AI personalize my diet plan?",
+      content: `FoodGenie considers your goals (weight loss, muscle gain, etc.), health conditions (allergies, diseases), and preferences (favorite foods, dietary restrictions) to create a customized plan.`,
+    },
+    {
+      title: "Can I adjust my personalized plan if needed",
+      content: `Yes, you can easily adjust your personalized plan by updating your goals, preferences, and tracking your progress to allow the AI to adapt your plan accordingly.
+    `,
+    },
+    {
+      title: "What are some upcoming features for the app?",
+      content: `We're constantly innovating! We're exploring features like AR-enabled portion visualization, a user-generated recipe community, and integration with health wearables for even more personalized adjustments..
+    `,
+    },
   ];
   return (
     <>
@@ -25,33 +50,19 @@ const Hero = () => {
             alt=""
             className="relative z-10 w-full object-cover rounded-lg h-[60vh] md:h-[80vh] brightness-[60%]"
           />
-          <div className="absolute top-[-5%] left-[3%] w-full h-full flex flex-col justify-end items-start z-20">
+          <div className="absolute top-[-5%] left-[3%] w-full h-full flex flex-col justify-end items-start z-20 pb-[4%]">
             <h1 className="text-2xl sm:text-3xl md:text-5xl font-[500] text-white">
               Welcome to FoodGenie
             </h1>
-            <p className="text-white font-[500] mt-[1%] sm:text-lg">
+            <p className="text-white font-[500] mt-[1%] sm:text-lg mb-3">
               Upgrade your diet, Upgrade your life
             </p>
-            <form className="w-full">
-              <div className="search w-[90%] sm:w-[60%] md:w-[50%] flex justify-between items-center gap-3 bg-[#FCFAF7] px-3 py-2 rounded-2xl mt-[4%]">
-                <div className="flex justify-center items-center">
-                  <img src={search} alt="" />
-                  <input
-                    type="text"
-                    className="bg-transparent outline-none placeholder-[#9C784A] pl-4 w-[28vw]"
-                    placeholder="Looking for something?"
-                    // onChange={(e) => setSearch(e.target.value)}
-                    // value={search}
-                  />
-                </div>
-                <div
-                  // onClick={handleSubmit}
-                  className="bg-[#F28F0D] hover:bg-[#ffa42e] font-[500] px-3 py-2 rounded-lg cursor-pointer"
-                >
-                  Search
-                </div>
-              </div>
-            </form>
+            <Link
+              to="/signup"
+              className="bg-[#F5C754] hover:bg-[#f89f2b] px-4 py-2 font-[500] rounded-lg cursor-pointer hidden md:block text-black"
+            >
+              Get Started
+            </Link>
           </div>
         </div>
         <div className="flex flex-col w-[80vw] relative mt-8 text-[#E5E8EB]">
@@ -65,35 +76,53 @@ const Hero = () => {
         </div>
         <div className="feature flex flex-col w-[80vw] relative mt-8 text-[#E5E8EB]">
           <div className="cards relative grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 lg:gap-11">
-            <div className="card min-w-[100px] flex flex-col justify-center items-start">
-              <img src={card} alt="" className="w-full" />
-              <div className="font-[500] mt-2">Restaurant</div>
-              <div className="">this is description</div>
+            <div className="card min-w-[100px] w-[17vw] flex flex-col justify-center items-start">
+              <div className="h-[80%]">
+                <img
+                  src={personalisedmealplan}
+                  alt=""
+                  className="w-full rounded-lg"
+                />
+              </div>
+              <div className="font-[500] mt-2 h-[20%]">
+                Personalized Meal Plans
+              </div>
             </div>
-            <div className="card min-w-[100px] flex flex-col justify-center items-start">
-              <img src={card} alt="" className="w-full" />
-              <div className="font-[500] mt-2 ">Dish</div>
-              <div className="">this is description</div>
+            <div className="card min-w-[100px] w-[17vw] flex flex-col justify-center items-start">
+              <div className="h-[80%]">
+                <img src={cfi} alt="" className="w-full rounded-lg" />
+              </div>
+              <div className="font-[500] mt-2 h-[20%] ">
+                Comprehensive Food Info
+              </div>
             </div>
-            <div className="card min-w-[100px] flex flex-col justify-center items-start">
-              <img src={card} alt="" className="w-full" />
-              <div className="font-[500] mt-2 ">Cuisine</div>
-              <div className="">this is description</div>
+            <div className="card min-w-[100px] w-[17vw] flex flex-col justify-center items-start">
+              <div className="h-[80%]">
+                <img src={iff} alt="" className="w-full rounded-lg" />
+              </div>
+              <div className="font-[500] mt-2 h-[20%] ">Indian Food Focus</div>
             </div>
-            <div className="card min-w-[100px] flex flex-col justify-center items-start">
-              <img src={card} alt="" className="w-full" />
-              <div className="font-[500] mt-2 ">Dine in</div>
-              <div className="">this is description</div>
+            <div className="card min-w-[100px] w-[17vw] flex flex-col justify-center items-start">
+              <div className="h-[80%]">
+                <img src={chatbot} alt="" className="w-full rounded-lg" />
+              </div>
+              <div className="font-[500] mt-2 h-[20%] ">Chatbot Assistant</div>
             </div>
-            <div className="card min-w-[100px] flex flex-col justify-center items-start">
-              <img src={card} alt="" className="w-full" />
-              <div className="font-[500] mt-2 ">Take on</div>
-              <div className="">this is description</div>
+            <div className="card min-w-[100px] w-[17vw] flex flex-col justify-center items-start">
+              <div className="h-[80%]">
+                <img src={cmb} alt="" className="w-full rounded-lg" />
+              </div>
+              <div className="font-[500] mt-2 h-[20%] ">
+                Custom Meal Builder
+              </div>
             </div>
-            <div className="card min-w-[100px] flex flex-col justify-center items-start">
-              <img src={card} alt="" className="w-full" />
-              <div className="font-[500] mt-2 ">Delevery</div>
-              <div className="">this is description</div>
+            <div className="card min-w-[100px] w-[17vw]  flex flex-col justify-center items-start">
+              <div className="h-[80%]">
+                <img src={crs} alt="" className="w-full rounded-lg" />
+              </div>
+              <div className="font-[500] mt-2 h-[20%] ">
+                Community Recipe Sharing
+              </div>
             </div>
           </div>
         </div>
