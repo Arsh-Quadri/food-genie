@@ -1,20 +1,16 @@
 import { useState } from "react";
-// import { getDatabase } from "firebase/compat/database";
-// import firebase from "firebase/compat/app";
 import { useNavigate } from "react-router-dom";
-// import { database } from "../../backend/firebase";
 import { ref, set } from "firebase/database";
 import { database } from "../../backend/firebase";
 
 const Onboard = ({ user }) => {
+  const [gainOrLose, setgainOrLose] = useState("");
+  const [vegNonveg, setvegNonveg] = useState("");
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
   const [age, setAge] = useState("");
   const [gender, setgender] = useState("");
-  // const [veg, setVeg] = useState("");
   const navigate = useNavigate();
-  //   const auth = getAuth(app);
-  // const database = getDatabase(app);
   const handleOnboardingSubmit = async (e) => {
     e.preventDefault();
 
@@ -31,6 +27,8 @@ const Onboard = ({ user }) => {
         weight: weight,
         age: age,
         gender: gender,
+        gainOrLose: gainOrLose,
+        vegNonveg: vegNonveg,
         isOnboardingCompleted: true,
       });
 
@@ -39,6 +37,8 @@ const Onboard = ({ user }) => {
       setWeight("");
       setAge("");
       setgender("");
+      setvegNonveg("");
+      setgainOrLose("");
       // setVeg("")
       navigate("/dashboard");
     } catch (error) {
@@ -47,57 +47,165 @@ const Onboard = ({ user }) => {
   };
 
   return (
-    <div>
-      <h1>Onboarding Page</h1>
-      <form onSubmit={handleOnboardingSubmit}>
-        <div>
-          <label htmlFor="name">height:</label>
-          <input
-            type="text"
-            id="name"
-            value={height}
-            onChange={(e) => setHeight(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="name">weight:</label>
-          <input
-            type="text"
-            id="name"
-            value={weight}
-            onChange={(e) => setWeight(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="name">age:</label>
-          <input
-            type="text"
-            id="name"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="name">gender:</label>
-          <input
-            type="text"
-            id="name"
-            value={gender}
-            onChange={(e) => setgender(e.target.value)}
-          />
-        </div>
-        {/* <div>
-          <label htmlFor="name">veg or nonveg:</label>
-          <input
-            type="text"
-            id="name"
-            value={gender}
-            onChange={(e) => setgender(e.target.value)}
-          />
-        </div> */}
-
-        <button type="submit">Submit</button>
-      </form>
+    <div className="bg-[#121c24] w-full h-full flex justify-center items-center">
+      <div className=" w-[27%] px-1 py-1 flex flex-col items-center justify-center ">
+        <h1 className="text-3xl text-[#E5E8EB] font-medium py-5">Onboarding</h1>
+        <form className="w-full" onSubmit={handleOnboardingSubmit}>
+          <div className=" w-full flex flex-col justify-center items-center bg-[#23323d] rounded-xl shadow-lg shadow-black">
+            <div className=" flex flex-col justify-center  rounded-3xl px-2 py-2">
+              <div className="mt-3 ">
+                <h1 className="text-lg text-[#E5E8EB] font-medium text-left ">
+                  What's your primary goal?
+                </h1>
+                <div className="mt-3  flex flex-row font-[500]  gap-2">
+                  <label className="flex justify-center items-center gap-3 px-2 py-1 w-fit rounded-lg border border-[#E5E8EB]">
+                    <input
+                      type="radio"
+                      value="weightloss"
+                      checked={gainOrLose === "weightloss"}
+                      onChange={(e) => setgainOrLose(e.target.value)}
+                      className="form-radio w-3 text-black "
+                    />
+                    <span className="text-sm font-medium text-[#c0c1c2]">
+                      Weight Loss
+                    </span>
+                  </label>
+                  <label className="flex gap-3 px-2 py-1 w-fit rounded-lg border border-[#E5E8EB]">
+                    <input
+                      type="radio"
+                      value="weightgain"
+                      checked={gainOrLose === "weightgain"}
+                      onChange={(e) => setgainOrLose(e.target.value)}
+                      className="form-radio w-3 text-black "
+                    />
+                    <span className="text-sm font-medium text-[#c0c1c2]">
+                      Weight Gain
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div className=" mt-3">
+                <h1 className="text-lg text-[#E5E8EB] font-[600] relative  left-0 text-left ">
+                  What's your preferences?
+                </h1>
+                <div className="mt-3  flex flex-row font-[500]  gap-2">
+                  <label className="flex justify-center items-center gap-3 px-2 py-1 w-fit rounded-lg border border-[#E5E8EB]">
+                    <input
+                      type="radio"
+                      value="veg"
+                      checked={vegNonveg === "veg"}
+                      onChange={(e) => setvegNonveg(e.target.value)}
+                      className="form-radio w-3 text-black"
+                    />
+                    <span className="text-sm font-medium text-[#c0c1c2]">
+                      Veg
+                    </span>
+                  </label>
+                  <label className="flex gap-3 px-2 py-1 w-fit rounded-lg border border-[#E5E8EB]">
+                    <input
+                      type="radio"
+                      value="nonveg"
+                      checked={vegNonveg === "nonveg"}
+                      onChange={(e) => setvegNonveg(e.target.value)}
+                      className="form-radio w-3 text-black"
+                    />
+                    <span className="text-sm font-medium text-[#c0c1c2]">
+                      Non-Veg
+                    </span>
+                  </label>
+                  <label className="flex justify-center items-center gap-3 px-2 py-1 w-fit rounded-lg border border-[#E5E8EB]">
+                    <input
+                      type="radio"
+                      value="vegan"
+                      checked={vegNonveg === "vegan"}
+                      onChange={(e) => setvegNonveg(e.target.value)}
+                      className="form-radio w-3 text-black "
+                    />
+                    <span className="text-sm font-medium text-[#c0c1c2]">
+                      Vegan
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div className="mt-3 flex flex-col gap-3">
+                <div className="flex flex-col">
+                  <label className="pb-1 font-medium text-[#E5E8EB]">
+                    Height(cm):
+                  </label>
+                  <input
+                    type="number"
+                    id="name"
+                    value={height}
+                    className="bg-transparent px-3 py-2 border border-[#E5E8EB] rounded-lg outline-none text-sm font-medium text-[#E5E8EB]"
+                    onChange={(e) => setHeight(e.target.value)}
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <label className="pb-1 font-medium text-[#E5E8EB]">
+                    Weight(kg):
+                  </label>
+                  <input
+                    type="number"
+                    id="name"
+                    value={weight}
+                    className="bg-transparent px-3 py-2 border border-[#E5E8EB] rounded-lg outline-none text-sm font-medium text-[#E5E8EB]"
+                    onChange={(e) => setWeight(e.target.value)}
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <label className="pb-1 font-medium text-[#E5E8EB]">
+                    Age:
+                  </label>
+                  <input
+                    type="number"
+                    id="name"
+                    value={age}
+                    className="bg-transparent px-3 py-2 border border-[#E5E8EB] rounded-lg outline-none text-sm font-medium text-[#E5E8EB]"
+                    onChange={(e) => setAge(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <h1 className="text-lg pb-1 text-[#E5E8EB] font-medium text-left ">
+                    Gender:
+                  </h1>
+                  <div className="flex flex-row font-[500]  gap-2">
+                    <label className="flex justify-center items-center gap-3 px-2 py-1 w-fit rounded-lg border border-[#E5E8EB]">
+                      <input
+                        type="radio"
+                        value="male"
+                        checked={gender === "male"}
+                        onChange={(e) => setgender(e.target.value)}
+                        className="form-radio w-3 text-black "
+                      />
+                      <span className="text-sm font-medium text-[#c0c1c2]">
+                        Male
+                      </span>
+                    </label>
+                    <label className="flex gap-3 px-2 py-1 w-fit rounded-lg border border-[#E5E8EB]">
+                      <input
+                        type="radio"
+                        value="female"
+                        checked={gender === "female"}
+                        onChange={(e) => setgender(e.target.value)}
+                        className="form-radio w-3 text-black "
+                      />
+                      <span className="text-sm font-medium text-[#c0c1c2]">
+                        Female
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <button
+                type="submit"
+                className="bg-[#f5c754] hover:bg-[#f89f2b] px-3 py-2 rounded-lg font-medium cursor-pointer  md:block text-center my-4"
+              >
+                Generate My Meal Plan
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

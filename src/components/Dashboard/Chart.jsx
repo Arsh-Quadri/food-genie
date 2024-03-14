@@ -45,13 +45,13 @@ const Chart = ({ meals, caloriesMaintain }) => {
       y: {
         ticks: { color: "#E5E8EB" }, // Change y-axis tick text color
         grid: {
-          color: "rgb(239, 239, 240)", // Change x-axis grid color to light gray
+          color: "rgb(239, 239, 240,0.1)", // Change x-axis grid color to light gray
         },
       },
       x: {
         ticks: { color: "#E5E8EB" }, // Change x-axis tick text color
         grid: {
-          color: "rgba(0, 0, 0, 0.5)", // Change x-axis grid color to light gray
+          color: "rgba(239, 239, 240,0.1)", // Change x-axis grid color to light gray
         },
       },
     },
@@ -155,7 +155,7 @@ const Chart = ({ meals, caloriesMaintain }) => {
           </div>
         </div>
       </div>
-      <div className="w-full text-2xl py-3 text-center font-medium text-[#E5E8EB]">
+      <div className="w-full mt-10 text-2xl py-3 text-center font-medium text-[#E5E8EB]">
         Total Calories in Recipes vs Maintain weight Calories
       </div>
       <Bar options={option} data={data} />

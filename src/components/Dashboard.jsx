@@ -5,6 +5,7 @@ import Community from "./Dashboard/Community";
 import Profile from "./Dashboard/Profile";
 import CreatePost from "./Dashboard/CreatePost";
 import Settings from "./Dashboard/Settings";
+import Custom from "./Dashboard/Custom";
 import Chatbot from "./Dashboard/Chatbot";
 import { useState } from "react";
 import chatbot from "../assets/chatbot.gif";
@@ -43,6 +44,7 @@ const Dashboard = ({ user, setRecipe, recipe }) => {
             <Route path="/profile" element={<Profile />} />
             <Route path="/create-post" element={<CreatePost />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/custom" element={<Custom />} />
             {recipe && (
               <Route
                 path={`/recipes/${recipe.name}`}
