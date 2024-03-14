@@ -37,7 +37,7 @@ const Recommend = ({ user, setRecipe, meals, setMeals, generatePrompt }) => {
               .replace(/`json|`JSON|`/g, "")
               .trim();
             try {
-              const parsedJSON = JSON.parse(jsonResponse);
+              const parsedJSON = JSON.parse(response.text());
               console.log("gemini data");
               setMeals((prevMeals) => ({
                 ...prevMeals,
