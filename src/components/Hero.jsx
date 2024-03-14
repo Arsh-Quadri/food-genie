@@ -27,10 +27,10 @@ const Hero = () => {
           />
           <div className="absolute top-[-5%] left-[3%] w-full h-full flex flex-col justify-end items-start z-20">
             <h1 className="text-2xl sm:text-3xl md:text-5xl font-[500] text-white">
-              Welcome to Rentify
+              Welcome to FoodGenie
             </h1>
             <p className="text-white font-[500] mt-[1%] sm:text-lg">
-              The world`s best selection of homes, experiences, and places
+              Upgrade your diet, Upgrade your life
             </p>
             <form className="w-full">
               <div className="search w-[90%] sm:w-[60%] md:w-[50%] flex justify-between items-center gap-3 bg-[#FCFAF7] px-3 py-2 rounded-2xl mt-[4%]">
