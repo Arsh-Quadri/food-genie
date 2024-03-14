@@ -12,6 +12,8 @@ const DashboardMain = ({ user, setRecipe }) => {
   const userId = (user && user.uid) || null;
   const [onboardData, setOnboardData] = useState(null);
   const [meals, setMeals] = useState({});
+  const [veg, setveg] = useState("");
+  const [gainOrLose, setgainOrLose] = useState("");
   useEffect(() => {
     const fetchOnboardData = async () => {
       try {
@@ -28,7 +30,12 @@ const DashboardMain = ({ user, setRecipe }) => {
 
     fetchOnboardData();
   }, [userId]);
-
+  useEffect(() => {
+    if (onboardData) {
+      setveg(onboardData.vegNonveg);
+      setgainOrLose(onboardData.gainOrLose);
+    }
+  }, [onboardData]);
   const calculateCalories = () => {
     if (onboardData) {
       const { age, height, weight, gainOrLose, vegNonveg } = onboardData;
@@ -38,6 +45,7 @@ const DashboardMain = ({ user, setRecipe }) => {
       const caloriesMaintain = Math.round(
         (88.362 + 13.397 * weight + 4.799 * height - 5.677 * age) * 1.2
       );
+
       const caloriesMildLoss = Math.round(caloriesMaintain - 250);
       const caloriesWeightLoss = Math.round(caloriesMaintain - 500);
       const caloriesExtremeLoss = Math.round(caloriesMaintain - 1000); // As per your formula
@@ -60,7 +68,6 @@ const DashboardMain = ({ user, setRecipe }) => {
     }
     return null;
   };
-
   const calories = calculateCalories();
   const genAI = new GoogleGenerativeAI(
     "AIzaSyBVUl2nH45a7LBszSoQz6YshtzI5HbclKw"
@@ -167,10 +174,12 @@ const DashboardMain = ({ user, setRecipe }) => {
     // ... (existing prompt logic)
     return `Generate a JSON object containing indian recipe suggestions for a meal plan. Include 5 recipes for ${mealType} of different types, respond unique and different recipes everytime. ${
       mealType != "breakfast" &&
-      "major focus should be indian but you can add foreign food famous in india, If meal is sabji then people also eat roti with it (not in biriyani and other rice containing thing) avg person eats 4-5 roti, add this roti in your ingredients, and also add count of calories of roti to count of calories of meal,"
+      "major focus should be indian but you can add foreign food famous in india, If meal is sabji then people also eat roti with it (not in biriyani and other rice containing thing) avg person eats 4-5 roti, add this roti in your ingredients, take calories of each roti as 90 and also add 90*(count of calories of roti) to the total calories of meal(int roti only return integer values of roti and not any other text needed), don't take single roti as a meal,"
     }  Ensure that the calories of the ${mealType} should be respect to daily intake of 1976 calories. Each recipe should include the following attributes: name, ingredients (an array of objects with name and quantity attributes), method (description of the cooking process), and calories ${
-      mealType != "breakfast" &&
-      "(add roti's calories to meal and return total calories)."
+      veg == "veg" && "generate only vegetarian food"
+    } ${
+      gainOrLose == "weightgain" &&
+      "I want to gain weight so give the food reccomendation with more calories."
     } Make sure that the JSON structure follows the format (don't add any thing in json file that gives error in json.parser):
 
   //   {
