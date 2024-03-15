@@ -82,7 +82,7 @@ const Login = ({ isOnboardingCompleted }) => {
           />
         </div>
         <div className="mt-3">
-          <h1 className="text-md font-[600] relative text-[#E5E8EB] left-0 text-left">
+          <h1 className="text-md font-[600] relative text-[#E5E8EB] left-0 text-left mb-1">
             Password
           </h1>
           <input

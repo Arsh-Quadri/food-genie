@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { auth, database } from "../backend/firebase";
 import { ref, onValue } from "firebase/database";
 import Footer from "./components/Footer";
+import About from "./components/About";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -70,6 +71,10 @@ function App() {
         <Route
           path="/login"
           element={<Login isOnboardingCompleted={isOnboardingCompleted} />}
+        />
+        <Route
+          path="/about"
+          element={<About/>}
         />
         <Route
           path="/signup"
