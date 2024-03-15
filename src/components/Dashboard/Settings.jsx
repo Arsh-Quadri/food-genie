@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { ref, get, update } from "firebase/database";
 import { database } from "../../../backend/firebase";
+import { useNavigate } from "react-router-dom";
 
 const Settings = ({ user }) => {
   const userId = (user && user.uid) || null;
@@ -11,34 +12,38 @@ const Settings = ({ user }) => {
   const [weight, setWeight] = useState("");
   const [age, setAge] = useState("");
   const [gender, setgender] = useState("");
+  const navigate = useNavigate();
 
   // Fetch user data upon component mount
   useEffect(() => {
     const fetchUserData = async () => {
-      if (!user) return;
+      if (!user || !userId) return;
 
       const userRef = ref(database, `users/${userId}/onboardData`);
       const snapshot = await get(userRef);
       const data = snapshot.val();
 
-      setName(data.name);
-      setgainOrLose(data.gainOrLose);
-      setvegNonveg(data.vegNonveg);
-      setHeight(data.height);
-      setWeight(data.weight);
-      setAge(data.age);
-      setgender(data.gender);
+      if (data) {
+        setName(data.name || "");
+        setgainOrLose(data.gainOrLose || "");
+        setvegNonveg(data.vegNonveg || "");
+        setHeight(data.height || "");
+        setWeight(data.weight || "");
+        setAge(data.age || "");
+        setgender(data.gender || "");
+      }
     };
 
     fetchUserData();
-  }, [user]);
+  }, [user, userId]);
 
   const handleSaveSettings = async (e) => {
     e.preventDefault();
 
     // Update Firebase data
     try {
-      const userRef = ref(database, `users/${userId}/onboardData`);
+      console.log(`users/${userId && userId}/onboardData`);
+      const userRef = ref(database, `users/${userId && userId}/onboardData`);
       await update(userRef, {
         height,
         weight,
@@ -48,7 +53,9 @@ const Settings = ({ user }) => {
         vegNonveg,
         name,
       });
-
+      window.scrollTo(0, 0);
+      navigate("/dashboard");
+      console.log("Hello");
       // ... rest of your success logic (e.g., show confirmation message)
     } catch (error) {
       console.error("Error updating data:", error);

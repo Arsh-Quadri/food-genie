@@ -43,7 +43,7 @@ const Dashboard = ({ user, setRecipe, recipe }) => {
             <Route path="/community" element={<Community />} />
             <Route path="/profile" element={<Profile user={user} />} />
             <Route path="/create-post" element={<CreatePost user={user} />} />
-            <Route path="/settings" element={<Settings />} />
+            <Route path="/settings" element={<Settings user={user} />} />
             <Route path="/custom" element={<Custom />} />
             {recipe && (
               <Route
