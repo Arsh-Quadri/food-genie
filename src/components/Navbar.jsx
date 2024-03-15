@@ -34,9 +34,13 @@ const Navbar = ({ user, setIsOnboardingCompleted }) => {
           {/* <Link to="/dashboard" className="cursor-pointer hidden lg:block">
             Dashboard
           </Link> */}
-          <div className="cursor-pointer hidden lg:block">How it works</div>
-          <div className="cursor-pointer hidden md:block">Community</div>
-          <div className="cursor-pointer hidden md:block">About Us</div>
+          {/* <div className="cursor-pointer hidden lg:block">How it works</div> */}
+          <Link to="/login" className="cursor-pointer hidden md:block">
+            Community
+          </Link>
+          <div className="cursor-pointer hidden md:block">
+            About
+          </div>
 
           {user ? (
             <>
