@@ -76,6 +76,7 @@ const CreatePost = ({ user }) => {
       <form onSubmit={handleSubmit}>
         <textarea
           value={content}
+          rows={10}
           onChange={(e) => setContent(e.target.value)}
           placeholder="Create a new post..."
           className="w-full bg-transparent outline-none text-[#E5E8EB] border border-[#E5E8EB] px-2 py-1 rounded-lg"

@@ -68,12 +68,12 @@ const Sidebar = ({ pathname, setPathname }) => {
       <Link
         to="https://fitness-by-arsh.netlify.app/"
         className={`w-full text-left py-2 px-3 hover:bg-[#0e161b] rounded-lg text-[#E5E8EB] font-medium cursor-pointer flex gap-3 justify-start items-center ${
-          pathname === "/dashboard/settings" ? "bg-[#0e161b]" : ""
+          pathname === "/dashboard/settings" ? "" : ""
         }`}
-        onClick={() => setPathname("/dashboard/settings")}
+        onClick={() => setPathname("/dashboard")}
       >
         <FontAwesomeIcon icon={faDumbbell} />
-        <div>Fitness Freak</div>
+        <div className="">Fitness Freak</div>
       </Link>
     </div>
   );
