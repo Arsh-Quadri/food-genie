@@ -7,6 +7,7 @@ import Recommend from "./Recommend";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import Chart from "./Chart";
 import { Link } from "react-router-dom";
+import bmi from "../../assets/BMI2.png";
 
 const DashboardMain = ({ user, setRecipe }) => {
   const userId = (user && user.uid) || null;
@@ -197,7 +198,7 @@ const DashboardMain = ({ user, setRecipe }) => {
   };
 
   return (
-    <div className="w-[90%] h-fit bg-[#23323d] p-5 px-10 mt-6 rounded-xl shadow-lg shadow-black">
+    <div className="w-[90%] h-fit relative bg-[#23323d] p-5 px-10 mt-6 rounded-xl shadow-lg shadow-black">
       <div className="flex justify-end gap-3">
         <div
           className="bg-[#F5C754] hover:bg-[#f89f2b] px-4 py-2 rounded-xl cursor-pointer w-fit text-black font-medium"
@@ -213,6 +214,7 @@ const DashboardMain = ({ user, setRecipe }) => {
         </Link>
       </div>
       <hr className="w-full text-[#E5E8EB] my-4" />
+      <img src={bmi} alt="" className="w-[40%] absolute top-20 right-10" />
       {/* <div className="text-[#8a8e90] underline">suggested</div> */}
       {calories && (
         <div className="">

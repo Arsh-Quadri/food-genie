@@ -10,6 +10,7 @@ const Onboard = ({ user }) => {
   const [weight, setWeight] = useState("");
   const [age, setAge] = useState("");
   const [gender, setgender] = useState("");
+  const [name, setname] = useState("");
   const navigate = useNavigate();
   const handleOnboardingSubmit = async (e) => {
     e.preventDefault();
@@ -30,6 +31,7 @@ const Onboard = ({ user }) => {
         gainOrLose: gainOrLose,
         vegNonveg: vegNonveg,
         isOnboardingCompleted: true,
+        name: name,
       });
 
       // Reset form fields and show success message
@@ -39,6 +41,7 @@ const Onboard = ({ user }) => {
       setgender("");
       setvegNonveg("");
       setgainOrLose("");
+      setname("");
       // setVeg("")
       navigate("/dashboard");
     } catch (error) {
@@ -53,6 +56,18 @@ const Onboard = ({ user }) => {
           <div className=" w-full flex flex-col justify-center items-center bg-[#23323d] rounded-xl shadow-lg shadow-black">
             <div className="w-full flex flex-col justify-center  rounded-3xl px-8 py-2">
               <div className="mt-3 ">
+                <div className="flex flex-col">
+                  <label className="pb-1 font-medium text-[#E5E8EB]">
+                    Name:
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    value={name}
+                    className="bg-transparent px-3 py-2 border border-[#E5E8EB] rounded-lg outline-none text-sm font-medium text-[#E5E8EB]"
+                    onChange={(e) => setname(e.target.value)}
+                  />
+                </div>
                 <h1 className="text-lg text-[#E5E8EB] font-medium text-left ">
                   What's your primary goal?
                 </h1>

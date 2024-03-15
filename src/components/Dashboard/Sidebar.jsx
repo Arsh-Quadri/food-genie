@@ -5,6 +5,7 @@ import {
   faUser,
   faSquarePlus,
   faGear,
+  faDumbbell,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
@@ -63,6 +64,16 @@ const Sidebar = ({ pathname, setPathname }) => {
       >
         <FontAwesomeIcon icon={faGear} />
         <div>Settings</div>
+      </Link>
+      <Link
+        to="https://fitness-by-arsh.netlify.app/"
+        className={`w-full text-left py-2 px-3 hover:bg-[#0e161b] rounded-lg text-[#E5E8EB] font-medium cursor-pointer flex gap-3 justify-start items-center ${
+          pathname === "/dashboard/settings" ? "bg-[#0e161b]" : ""
+        }`}
+        onClick={() => setPathname("/dashboard/settings")}
+      >
+        <FontAwesomeIcon icon={faDumbbell} />
+        <div>Fitness Freak</div>
       </Link>
     </div>
   );
