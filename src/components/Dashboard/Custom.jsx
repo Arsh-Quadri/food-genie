@@ -6,12 +6,12 @@ const Custom = () => {
   const [breakfast, setBreakfast] = useState("");
   const [lunch, setLunch] = useState("");
   const [dinner, setDinner] = useState("");
-  const genAI = new GoogleGenerativeAI(
-    "AIzaSyBVUl2nH45a7LBszSoQz6YshtzI5HbclKw"
-  );
+  const [loading, setLoading] = useState(false);
+  const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GENAI_KEY);
   const handleGenerate = async () => {
+    setLoading(true);
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-    const prompt = `This is my breakfast ${breakfast}, this is lunch ${lunch}, this is dinner ${dinner} calculate calories, protein, carb, fat for each breaktfast, luch, and dinner. add all this things as json formate and return Json file
+    const prompt = `This is my breakfast ${breakfast}, this is lunch ${lunch}, this is dinner ${dinner} calculate calories, protein, carb, fat for each breaktfast, luch, and dinner. add all this things as json formate and return Json file ** don't add any comments **
     
     example json file is given below:
 
@@ -46,19 +46,18 @@ const Custom = () => {
     `; // Function to create meal-specific prompts
     const result = await model.generateContent(prompt);
     const response = await result.response;
-    // console.log(response.text());
     const jsonResponse = response
       .text()
       .replace(/`json|`JSON|`/g, "")
       .trim();
-    console.log(jsonResponse);
 
     try {
       const parsedJSON = JSON.parse(jsonResponse);
-      console.log(parsedJSON);
       setjsonData(parsedJSON);
     } catch (error) {
       console.log(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -77,7 +76,7 @@ const Custom = () => {
     : 0;
 
   return (
-    <div className="w-[90%] h-fit bg-[#23323d] p-5 px-10 mt-6 rounded-xl shadow-lg shadow-black">
+    <div className="w-[90%] h-fit bg-[#23323d] p-10 mt-6 rounded-xl shadow-lg shadow-black">
       <div className="text-2xl font-medium text-[#E5E8EB]">
         Your Personalized Nutrition Hub
       </div>
@@ -119,9 +118,9 @@ const Custom = () => {
       </div>
       <button
         onClick={handleGenerate}
-        className="bg-[#f5c754] hover:bg-[#f89f2b] px-3 py-2 rounded-lg font-medium cursor-pointer  md:block text-center my-4"
+        className="bg-[#f5c754] hover:bg-[#f89f2b] px-3 py-2 rounded-lg font-medium w-[120px] cursor-pointer  md:block text-center my-4"
       >
-        Generate
+        {loading ? "Generating..." : "Generate"}
       </button>
       <hr className="my-5" />
       {/* {JSON.stringify(jsonData, null, 2)} */}

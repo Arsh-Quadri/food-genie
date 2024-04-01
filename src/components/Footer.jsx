@@ -4,7 +4,7 @@ import insta from "../assets/instagram.png";
 
 const Footer = () => {
   return (
-    <div className="pt-5 bg-[#121c24] flex justify-center items-center">
+    <div className="pt-7 bg-[#121c24] flex justify-center items-center">
       <div className="w-[70vw] flex flex-col justify-center items-center gap-4 py-5">
         <div className="flex flex-wrap justify-center items-center font-[500] text-[#E5E8EB] gap-5 md:gap-10 lg:gap-20">
           <div className="cursor-pointer">About</div>

@@ -4,12 +4,16 @@ import { database } from "../../../backend/firebase";
 import { get, ref, set } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 
-const Recommend = ({ user, setRecipe, meals, setMeals, generatePrompt }) => {
+const Recommend = ({
+  user,
+  setRecipe,
+  meals,
+  setMeals,
+  demomeals,
+  setNewUser,
+}) => {
   const userId = (user && user.uid) || null;
-  // const [meals, setMeals] = useState({});
-  const genAI = new GoogleGenerativeAI(
-    "AIzaSyBVUl2nH45a7LBszSoQz6YshtzI5HbclKw"
-  );
+  const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GENAI_KEY);
 
   useEffect(() => {
     async function fetchOrGenerateData() {
@@ -23,35 +27,20 @@ const Recommend = ({ user, setRecipe, meals, setMeals, generatePrompt }) => {
           );
           const snapshot = await get(mealRef);
           const cachedData = snapshot.val();
-          console.log(cachedData);
+
           if (cachedData) {
-            console.log("backend data");
+            // console.log("Using cached data for", mealType);
             setMeals((prevMeals) => ({ ...prevMeals, [mealType]: cachedData }));
+            setNewUser(false);
           } else {
-            const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-            const prompt = generatePrompt(mealType); // Function to create meal-specific prompts
-            const result = await model.generateContent(prompt);
-            const response = await result.response;
-            const jsonResponse = response
-              .text()
-              .replace(/`json|`JSON|`/g, "")
-              .trim();
-            try {
-              const parsedJSON = JSON.parse(response.text());
-              console.log("gemini data");
-              setMeals((prevMeals) => ({
-                ...prevMeals,
-                [mealType]: parsedJSON,
-              }));
-              if (userId) {
-                await set(mealRef, parsedJSON);
-              }
-            } catch (error) {
-              console.log(error.message);
-            }
+            // If no cached data, call regenerateAllData
+            setNewUser(true);
+            // console.log("No cached data for", mealType, ", regenerating...");
+            // Note: You may need to adjust this call depending on how regenerateAllData works,
+            // e.g., if it needs to be called per meal type or just once.
           }
         }
-        console.log("gemini completed");
+        // console.log("Data fetching or generation completed");
       } catch (error) {
         console.error(error);
       }
@@ -60,44 +49,20 @@ const Recommend = ({ user, setRecipe, meals, setMeals, generatePrompt }) => {
     fetchOrGenerateData();
   }, [userId]);
 
-  // console.log(meals);
-  // Function to generate meal-specific prompts
-  // const generatePrompt = (mealType) => {
-  //   // ... (existing prompt logic)
-  //   return `Generate a JSON object containing indian recipe suggestions for a meal plan. Include 5 recipes for ${mealType} of different types, respond unique and different recipes everytime. ${
-  //     mealType == "dinner" &&
-  //     "major focus should be indian but you can add foreign food famous in india"
-  //   } Ensure that the calories of the ${mealType} should be respect to daily intake of 1976 calories. Each recipe should include the following attributes: name, ingredients (an array of objects with name and quantity attributes), method (description of the cooking process), and calories. Make sure that the JSON structure follows the format:
-  //   {
-  //     "${mealType}": [
-  //       {
-  //         "name": "Recipe Name",
-  //         "ingredients": [
-  //           {"name": "Ingredient Name", "quantity": "Ingredient Quantity"},
-  //           ...
-  //         ],
-  //         "method": "Cooking Instructions",
-  //         "calories": Caloric Value
-  //       },
-  //       ...
-  //     ]
-  //   }`;
-  // };
-
-  //Regenrate
-
   // breakfast names
   const breakfastNames =
-    meals.breakfast && meals.breakfast.breakfast.map((recipe) => recipe);
+    (meals && meals.breakfast && meals.breakfast.breakfast) ||
+    demomeals.breakfast.breakfast.map((recipe) => recipe);
+
   const [showBreakfast, setShowBreakfast] = useState(false);
-  const lunchNames = meals.lunch && meals.lunch.lunch.map((recipe) => recipe);
+  const lunchNames =
+    (meals && meals.lunch && meals.lunch.lunch) ||
+    demomeals.lunch.lunch.map((recipe) => recipe);
   const [showLunch, setShowLunch] = useState(false);
   const dinnerNames =
-    meals.dinner && meals.dinner.dinner.map((recipe) => recipe);
+    (meals && meals.dinner && meals.dinner.dinner) ||
+    demomeals.dinner.dinner.map((recipe) => recipe);
   const [showDinner, setShowDinner] = useState(false);
-  // const toggleBreakfastVisibility = () => {
-  //   setShowBreakfast((prevState) => !prevState);
-  // };
   const navigate = useNavigate();
 
   const handleClick = (recipe) => {

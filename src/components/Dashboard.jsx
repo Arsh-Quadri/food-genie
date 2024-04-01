@@ -8,19 +8,17 @@ import Settings from "./Dashboard/Settings";
 import Custom from "./Dashboard/Custom";
 import Chatbot from "./Dashboard/Chatbot";
 import { useState } from "react";
-import chatbot from "../assets/chatbot.gif";
+import chatbot from "../assets/chatbot2.gif";
 import RecipeDetails from "./Dashboard/RecipeDetails";
 
 const Dashboard = ({ user, setRecipe, recipe }) => {
   const [chatbotOpen, setChatbotOpen] = useState(false);
-  const [pathname, setPathname] = useState("/dashboard");
 
-  console.log(pathname);
   return (
     <div>
       <div className="w-full flex justify-center py-5 bg-[#121c24]">
         <div className="left sticky top-0 w-[20%] left-0 h-full ">
-          <Sidebar pathname={pathname} setPathname={setPathname} />
+          <Sidebar />
         </div>
         <div className="right w-[80%] right-0 h-fit flex justify-center items-start">
           {chatbotOpen && (
@@ -30,7 +28,7 @@ const Dashboard = ({ user, setRecipe, recipe }) => {
             <img
               src={chatbot}
               alt=""
-              className="w-[70px] h-[70px] rounded-full shadow-md shadow-gray-300"
+              className="w-[60px] h-[60px] rounded-full object-cover shadow-md"
               onClick={() => setChatbotOpen(!chatbotOpen)}
             />
           </div>
@@ -40,7 +38,7 @@ const Dashboard = ({ user, setRecipe, recipe }) => {
               path="/*"
               element={<DashboardMain user={user} setRecipe={setRecipe} />}
             />
-            <Route path="/community" element={<Community />} />
+            <Route path="/community" element={<Community user={user} />} />
             <Route path="/profile" element={<Profile user={user} />} />
             <Route path="/create-post" element={<CreatePost user={user} />} />
             <Route path="/settings" element={<Settings user={user} />} />
@@ -51,13 +49,7 @@ const Dashboard = ({ user, setRecipe, recipe }) => {
                 element={<RecipeDetails recipe={recipe} />}
               />
             )}
-            {/* {!recipe && (
-              <Navigate to="/dashboard" replace />
-            ) : (
-              <RecipeDetails recipe={recipe} />
-            )} */}
           </Routes>
-          {/* <DashboardMain /> */}
         </div>
       </div>
     </div>

@@ -43,6 +43,7 @@ const Onboard = ({ user }) => {
       setgainOrLose("");
       setname("");
       // setVeg("")
+      window.scrollTo(0, 0);
       navigate("/dashboard");
     } catch (error) {
       console.error("Error submitting data:", error);

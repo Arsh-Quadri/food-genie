@@ -13,18 +13,16 @@ const Login = ({ isOnboardingCompleted }) => {
   const navigate = useNavigate();
   useEffect(() => {
     if (isOnboardingCompleted !== null) {
+      window.scrollTo(0, 0);
       isOnboardingCompleted ? navigate("/dashboard") : navigate("/onboard");
     }
   }, [isOnboardingCompleted]);
 
-  console.log(isOnboardingCompleted);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSignIn = async (e) => {
     e.preventDefault();
-    console.log(isOnboardingCompleted + "hello");
-    console.log("Hi");
 
     try {
       const userCredential = await signInWithEmailAndPassword(

@@ -14,6 +14,7 @@ const Signup = ({ isOnboardingCompleted }) => {
   const navigate = useNavigate();
   useEffect(() => {
     if (isOnboardingCompleted !== null) {
+      window.scrollTo(0, 0);
       isOnboardingCompleted ? navigate("/dashboard") : navigate("/onboard");
     }
   }, [isOnboardingCompleted]);

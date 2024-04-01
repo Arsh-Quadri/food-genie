@@ -18,16 +18,21 @@ ChartJS.register(
   Legend
 );
 
-const Chart = ({ meals, caloriesMaintain }) => {
+const Chart = ({ meals, caloriesMaintain, demomeals }) => {
   const [breakfast, setBreakfast] = useState({ name: "", calories: 0 });
   const [lunch, setLunch] = useState({ name: "", calories: 0 });
   const [dinner, setDinner] = useState({ name: "", calories: 0 });
 
   const breakfastData =
-    meals.breakfast && meals.breakfast.breakfast.map((recipe) => recipe);
-  const lunchData = meals.lunch && meals.lunch.lunch.map((recipe) => recipe);
+    (meals && meals.breakfast && meals.breakfast.breakfast) ||
+    demomeals.breakfast.breakfast.map((recipe) => recipe);
+
+  const lunchData =
+    (meals && meals.lunch && meals.lunch.lunch) ||
+    demomeals.lunch.lunch.map((recipe) => recipe);
   const dinnerData =
-    meals.dinner && meals.dinner.dinner.map((recipe) => recipe);
+    (meals && meals.dinner && meals.dinner.dinner) ||
+    demomeals.dinner.dinner.map((recipe) => recipe);
 
   const totalCalories = breakfast.calories + lunch.calories + dinner.calories;
 
@@ -35,11 +40,6 @@ const Chart = ({ meals, caloriesMaintain }) => {
     responsive: true,
     plugins: {
       legend: { position: "top", labels: { color: "#E5E8EB" } },
-      // title: {
-      //   display: true,
-      //   text: "Daily Calories Count",
-      //   color: "#FFFFFF",
-      // },
     },
     scales: {
       y: {
@@ -77,7 +77,7 @@ const Chart = ({ meals, caloriesMaintain }) => {
     <>
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-5 my-5">
         <div className="flex flex-col justify-center items-start gap-3  ">
-          <div className="text-xl text-[#E5E8EB]">Choose your breakfast</div>
+          <div className="text-xl text-[#E5E8EB]">Choose your Breakfast</div>
           <div className="border bg-[#121c24] border-[#E5E8EB] px-2 text-[#E5E8EB] text-sm font-medium rounded-lg w-full">
             <select
               value={breakfast.name}
@@ -103,7 +103,7 @@ const Chart = ({ meals, caloriesMaintain }) => {
           </div>
         </div>
         <div className="flex flex-col justify-center items-start gap-3  ">
-          <div className="text-xl text-[#E5E8EB]">Choose your lunch</div>
+          <div className="text-xl text-[#E5E8EB]">Choose your Lunch</div>
           <div className="border bg-[#121c24] border-[#E5E8EB] px-2 text-[#E5E8EB] text-sm font-medium rounded-lg w-full">
             <select
               value={lunch.name}
@@ -158,7 +158,7 @@ const Chart = ({ meals, caloriesMaintain }) => {
       <div className="w-full mt-10 text-2xl py-3 text-center font-medium text-[#E5E8EB]">
         Total Calories in Recipes vs Maintain weight Calories
       </div>
-      <Bar options={option} data={data} />
+      <Bar options={option} data={data} className="mb-5" />
     </>
   );
 };

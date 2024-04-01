@@ -14,13 +14,13 @@ function App() {
   const [user, setUser] = useState(null);
   const [isOnboardingCompleted, setIsOnboardingCompleted] = useState(null);
   const [recipe, setRecipe] = useState();
-  console.log(isOnboardingCompleted);
+  // console.log(isOnboardingCompleted);
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setUser(user);
-      console.log(user + " user");
+      // console.log(user + " user");
       if (user) {
-        console.log(user.uid + " user.uid");
+        // console.log(user.uid + " user.uid");
         checkOnboardingStatus(user.uid);
       }
     });
@@ -35,8 +35,6 @@ function App() {
         try {
           if (snapshot.exists()) {
             const userData = snapshot.val();
-            console.log(userData.isOnboardingCompleted + "check app");
-            // console.log(userData?.userId?.isOnboardingCompleted + " data");
             setIsOnboardingCompleted(userData?.isOnboardingCompleted); //
           } else {
             console.log("No data found for user:", userId);
@@ -71,10 +69,6 @@ function App() {
           path="/login"
           element={<Login isOnboardingCompleted={isOnboardingCompleted} />}
         />
-        {/* <Route
-          path="/about"
-          element={<About/>}
-        /> */}
         <Route
           path="/signup"
           element={<Signup isOnboardingCompleted={isOnboardingCompleted} />}
@@ -93,7 +87,11 @@ function App() {
         <Route
           path="/dashboard/*"
           element={
-            <Dashboard user={user} setRecipe={setRecipe} recipe={recipe} />
+            user && isOnboardingCompleted ? (
+              <Dashboard user={user} setRecipe={setRecipe} recipe={recipe} />
+            ) : (
+              <Navigate to="/" replace />
+            )
           }
         />
       </Routes>

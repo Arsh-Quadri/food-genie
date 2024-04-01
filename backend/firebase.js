@@ -1,18 +1,21 @@
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/database';
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/database";
+import "firebase/compat/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAhceFeuK5EvozLjeqMvIxhD6_7oCUnTHA",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "food-genie-9570b.firebaseapp.com",
-  projectId: "food-genie-9570b",
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECTID,
   storageBucket: "food-genie-9570b.appspot.com",
-  messagingSenderId: "709873368410",
-  appId: "1:709873368410:web:82a1a335bfde117900c763"
+  messagingSenderId: process.env.REACT_APP_FIREBASE_SENDERID,
+  appId: process.env.REACT_APP_FIREBASE_APPID,
 };
 
 const app = firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const database = firebase.database();
+const storage = firebase.storage();
 
-export { app, auth, database };
+export { app, auth, database, storage };
