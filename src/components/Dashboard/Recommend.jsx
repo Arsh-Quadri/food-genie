@@ -72,7 +72,7 @@ const Recommend = ({
     <div className="flex flex-col sm:flex-row justify-center w-full gap-3 mb-5">
       <div className="flex flex-col w-full h-fit gap-3">
         <div
-          className="relative bgimage bg-cover cursor-pointer w-full h-32 mt-2 bg-center  rounded-xl"
+          className="relative bimage bg-cover cursor-pointer w-full h-32 mt-2 bg-center  rounded-xl"
           onClick={() => setShowBreakfast(!showBreakfast)}
         >
           <div className="absolute inset-0 flex justify-center items-center">
@@ -100,7 +100,7 @@ const Recommend = ({
       </div>
       <div className="flex flex-col w-full h-fit gap-3">
         <div
-          className="relative bgimage bg-cover cursor-pointer w-full h-32 mt-2 bg-center  rounded-xl"
+          className="relative limage bg-cover cursor-pointer w-full h-32 mt-2 bg-center  rounded-xl"
           onClick={() => setShowLunch(!showLunch)}
         >
           <div className="absolute inset-0 flex justify-center items-center">
@@ -126,7 +126,7 @@ const Recommend = ({
       </div>
       <div className="flex flex-col w-full h-fit gap-3">
         <div
-          className="relative bgimage bg-cover cursor-pointer w-full h-32 mt-2 bg-center  rounded-xl"
+          className="relative dimage bg-cover cursor-pointer w-full h-32 mt-2 bg-center  rounded-xl"
           onClick={() => setShowDinner(!showDinner)}
         >
           <div className="absolute inset-0 flex justify-center items-center">

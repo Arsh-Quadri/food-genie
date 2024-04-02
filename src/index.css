@@ -39,9 +39,18 @@
   .white-icon {
     filter: invert(50%);
   }
-  .bgimage{
-    background-image: url('https://image.slidesdocs.com/responsive-images/background/wind-hello-breakfast-good-morning-powerpoint-background_a1acf99cb7__960_540.jpg');
+  .limage{
+    background-image: url('https://static.vecteezy.com/system/resources/thumbnails/026/761/466/small/generative-ai-light-yellow-fantastic-3d-clouds-on-the-floor-sky-and-landscape-gentle-colors-and-with-bright-lights-photo.jpg');
   }
+  .bimage{
+    background-image: url('https://img.freepik.com/free-vector/beautiful-white-cloud-blue-sky-background_1035-23406.jpg?size=626&ext=jpg&ga=GA1.1.1224184972.1711929600&semt=ais');
+  }
+  .dimage{
+    background-image: url('https://e0.pxfuel.com/wallpapers/824/863/desktop-wallpaper-pink-and-purple-sky-anime-aesthetic-purple-sky.jpg');
+  }
+  /* https://e0.pxfuel.com/wallpapers/824/863/desktop-wallpaper-pink-and-purple-sky-anime-aesthetic-purple-sky.jpg  dinner*/
+  /* https://img.freepik.com/free-vector/beautiful-white-cloud-blue-sky-background_1035-23406.jpg?size=626&ext=jpg&ga=GA1.1.1224184972.1711929600&semt=ais breakfast */
+  /* https://static.vecteezy.com/system/resources/thumbnails/026/761/466/small/generative-ai-light-yellow-fantastic-3d-clouds-on-the-floor-sky-and-landscape-gentle-colors-and-with-bright-lights-photo.jpg lunch */
   .scrollbar-none::-webkit-scrollbar {
     display: none;
   }
