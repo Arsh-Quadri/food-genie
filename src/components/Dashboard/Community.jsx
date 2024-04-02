@@ -7,7 +7,6 @@ import {
   orderByKey,
   query,
   ref,
-  startAfter,
 } from "firebase/database";
 import { database } from "../../../backend/firebase";
 import loader from "../../assets/loading.gif";
@@ -187,8 +186,8 @@ const Community = ({ user }) => {
     return <img src={loader} width={100} className="" />;
   }
   return (
-    <div className="w-[90%] h-fit relative bg-[#23323d] flex gap-5 p-10 mt-6 rounded-xl shadow-lg shadow-black">
-      <div className="flex flex-col gap-3 w-[60%]">
+    <div className="w-full md:w-[90%] h-fit relative bg-[#23323d] flex gap-5 p-5 sm:p-10 mt-0 sm:mt-6 rounded-xl shadow-none  md:shadow-lg shadow-black">
+      <div className="flex flex-col gap-3 w-full md:w-[60%]">
         {posts.map((post) => (
           <div
             key={post.id}
@@ -238,7 +237,7 @@ const Community = ({ user }) => {
           </div>
         )}
       </div>
-      <div className="flex flex-col items-end w-[40%]">
+      <div className="hidden md:flex flex-col items-end w-[40%]">
         <animated.div
           className="profile-card bg-[#0e161b] w-[70%] rounded-lg mx-10 pb-5 text-[#E5E8EB] font-medium overflow-hidden flex flex-col justify-center items-center sticky top-10 shadow-lg shadow-gray-950"
           onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}

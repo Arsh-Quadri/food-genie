@@ -18,9 +18,5 @@ module.exports = {
       { allowConstantExport: true },
     ],
     "react/prop-types": "off",
-    "no-undef": [
-      "error",
-      { typeof: ["undefined"] }, // Allow process for specific reasons
-    ],
   },
 };

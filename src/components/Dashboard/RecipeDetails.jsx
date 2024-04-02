@@ -5,14 +5,14 @@ import { useNavigate } from "react-router-dom";
 const RecipeDetails = ({ recipe }) => {
   const navigate = useNavigate();
   return (
-    <div className="w-[90%] h-fit bg-[#23323d] p-5 px-10 mt-6 rounded-xl shadow-lg shadow-black">
+    <div className="w-[90%] h-fit bg-[#23323d] p-5 md:px-10 mt-6 rounded-xl shadow-none md:shadow-lg shadow-black">
       <div
-        className="absolute text-[#E5E8EB] text-xl cursor-pointer"
+        className="absolute left-5 sm:left-auto text-[#E5E8EB] text-xl cursor-pointer"
         onClick={() => navigate(-1)}
       >
         <FontAwesomeIcon icon={faArrowLeft} />
       </div>
-      <div className="text-center text-3xl font-medium text-[#E5E8EB] ">
+      <div className="text-center flex flex-col md:flex-row justify-center items-center md:gap-2  text-3xl font-medium text-[#E5E8EB] ">
         {recipe.name}{" "}
         <span className="text-sm text-[#9ea3a4]">
           ( {recipe.calories} calories )

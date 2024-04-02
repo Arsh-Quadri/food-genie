@@ -1,6 +1,5 @@
 import {
   equalTo,
-  get,
   onValue,
   orderByChild,
   query,
@@ -214,9 +213,9 @@ const Profile = ({ user }) => {
     return <img src={loader} width={100} />;
   }
   return (
-    <div className="w-[90%] h-fit relative bg-[#23323d] p-5 px-10 mt-6 rounded-xl shadow-lg shadow-black">
-      <div className="flex justify-start items-center gap-8">
-        <div className="">
+    <div className="w-full md:w-[90%] h-fit relative bg-[#23323d] p-5 sm:px-10 mt-0 sm:mt-6 rounded-xl shadow-none md:shadow-lg shadow-black">
+      <div className="flex justify-start items-center gap-4 md:gap-8">
+        <div className="w-fit min-w-[110px] h-fit">
           <img
             src={
               profileImage
@@ -228,10 +227,12 @@ const Profile = ({ user }) => {
           />
         </div>
         <div className="flex flex-col justify-start gap-3">
-          <div className="flex justify-start items-center gap-5">
-            <div className="text-[#E5E8EB] font-medium">{name}</div>
+          <div className="flex flex-wrap justify-start items-center">
+            <div className="text-[#E5E8EB] font-medium pr-2 sm:pr-5">
+              {name}
+            </div>
             <div
-              className="flex justify-center items-center cursor-pointer gap-2 px-3 py-2 bg-[#0e161b] w-fit rounded-lg text-[#E5E8EB] font-medium"
+              className="flex justify-center items-center text-sm sm:text-base cursor-pointer gap-2 px-1.5 py-1.5 sm:px-3 sm:py-2 bg-[#0e161b] w-fit rounded-lg text-[#E5E8EB] font-medium"
               onClick={() => seteditOpen(true)}
             >
               Edit Profile
@@ -246,7 +247,7 @@ const Profile = ({ user }) => {
         <div>POSTS</div>
       </div>
       <div className="flex w-full justify-center items-start gap-5">
-        <div className="flex flex-col w-[60%]">
+        <div className="flex flex-col w-full md:w-[60%]">
           {posts.length == 0 && (
             <div className="bg-[#0e161b] rounded-lg px-5 mb-3 py-5 w-full text-[#E5E8EB] font-medium">
               No Posts Available
@@ -295,7 +296,7 @@ const Profile = ({ user }) => {
             </div>
           ))}
         </div>
-        <div className="flex flex-col justify-center items-center sticky top-10 w-[40%]">
+        <div className="flex-col hidden md:flex justify-center items-center sticky top-10 w-[40%]">
           <div className="bg-[#0e161b] w-[85%] h-fit rounded-lg mx-10 pb-5 text-[#E5E8EB] font-medium overflow-hidden flex flex-col p-5 justify-start items-center shadow-lg shadow-gray-950">
             Create your post from recent blogs
             <hr className="w-[70%] my-3" />

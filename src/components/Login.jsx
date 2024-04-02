@@ -63,7 +63,7 @@ const Login = ({ isOnboardingCompleted }) => {
   };
   return (
     <div className=" w-full flex flex-col justify-center items-center relative bckimg ">
-      <div className="sm:w-[85%] md:w-[50%] lg:w-[34%] bg-[#23323d] shadow-lg shadow-black relative mt-8 mb-12 flex flex-col justify-center p-5 px-10 rounded-xl z-20">
+      <div className="w-full sm:w-[65%] md:w-[40%] lg:w-[34%] bg-[#23323d] shadow-none sm:shadow-lg shadow-black relative mt-0 mb-0 sm:mt-8 sm:mb-12 flex flex-col justify-center p-5 px-10 rounded-none sm:rounded-xl z-20 ">
         <h1 className="text-3xl font-[750] text-[#F5C754] relative py-5 left-0 text-left">
           Login or create an account
         </h1>

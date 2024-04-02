@@ -76,7 +76,7 @@ const Custom = () => {
     : 0;
 
   return (
-    <div className="w-[90%] h-fit bg-[#23323d] p-10 mt-6 rounded-xl shadow-lg shadow-black">
+    <div className="w-full sm:w-[90%] h-fit bg-[#23323d] p-5 sm:p-10  sm:mt-6 rounded-xl shadow-none sm:shadow-lg shadow-black">
       <div className="text-2xl font-medium text-[#E5E8EB]">
         Your Personalized Nutrition Hub
       </div>
@@ -153,20 +153,24 @@ const Custom = () => {
       </div>
       <div className="grid grid-cols-2 gap-2">
         <div className="flex flex-col text-[#9ea3a4] bg-[#121c24] px-5 py-3 rounded-xl text-sm">
-          <div className="text-lg">Total Calories:</div>
-          <div className="text-[#E5E8EB] text-xl">{totalCalories} Calories</div>
+          <div className="text-base sm:text-lg">Total Calories:</div>
+          <div className="text-[#E5E8EB] text-lg sm:text-xl">
+            {totalCalories} Calories
+          </div>
         </div>
         <div className="flex flex-col text-[#9ea3a4] bg-[#121c24] px-5 py-3 rounded-xl text-sm">
-          <div className="text-lg">Total Proteins:</div>
-          <div className="text-[#E5E8EB] text-xl">{totalProteins}g</div>
+          <div className="text-base sm:text-lg">Total Proteins:</div>
+          <div className="text-[#E5E8EB] text-lg sm:text-xl">
+            {totalProteins}g
+          </div>
         </div>
         <div className="flex flex-col text-[#9ea3a4] bg-[#121c24] px-5 py-3 rounded-xl text-sm">
-          <div className="text-lg">Total Carbs:</div>
-          <div className="text-[#E5E8EB] text-xl">{totalCarbs}g</div>
+          <div className="text-base sm:text-lg">Total Carbs:</div>
+          <div className="text-[#E5E8EB] text-lg sm:text-xl">{totalCarbs}g</div>
         </div>
         <div className="flex flex-col text-[#9ea3a4] bg-[#121c24] px-5 py-3 rounded-xl text-sm">
-          <div className="text-lg">Total Fats:</div>
-          <div className="text-[#E5E8EB] text-xl">{totalFats}g</div>
+          <div className="text-base sm:text-lg">Total Fats:</div>
+          <div className="text-[#E5E8EB] text-lg sm:text-xl">{totalFats}g</div>
         </div>
       </div>
     </div>

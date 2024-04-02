@@ -28,6 +28,11 @@
   .accordion-content.open{
     height: 45px;
   }
+  @media (max-width:500px) {
+    .accordion-content.open{
+      height: 100px;
+    } 
+  }
   .rotate-180 {
     transform: rotate(180deg);
   }

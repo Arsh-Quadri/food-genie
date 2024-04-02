@@ -14,7 +14,7 @@ const Hero = () => {
   const items = [
     {
       title: "What is FoodGenie and what does it do?",
-      content: `[Your App Name] is a food suggestion web app powered by AI. It helps you achieve health goals with personalized diet plans, shape improvement tools, nutritional guidance, and allergy-friendly options.`,
+      content: `Food Genie is a food suggestion web app powered by AI. It helps you achieve health goals with personalized diet plans, shape improvement tools, nutritional guidance, and allergy-friendly options.`,
     },
     {
       title: "How is FoodGenie different from other food suggestion apps?",
@@ -49,7 +49,7 @@ const Hero = () => {
             <h1 className="text-xl sm:text-3xl md:text-5xl font-[500] text-white">
               Welcome to FoodGenie
             </h1>
-            <p className="text-white font-[500] mt-[1%] text-base sm:text-lg mb-3">
+            <p className="text-white font-[500] mt-[1%] text-sm sm:text-lg mb-3">
               Upgrade your diet, Upgrade your life
             </p>
             <Link
@@ -61,18 +61,18 @@ const Hero = () => {
           </div>
         </div>
         <div className="flex flex-col w-[80vw] relative mt-8 text-[#E5E8EB]">
-          <div className="text-left text-4xl font-[500] relative">
+          <div className="text-left text-xl sm:text-3xl md:text-4xl font-[500] relative">
             Discover something new
           </div>
-          <div className="text-left relative text-xl mt-3">
+          <div className="text-left relative text-sm sm:text-xl mt-3">
             Get inspired by the world of food. From local favorites to the
             best-kept secrets, enjoy a varity of choise
           </div>
         </div>
         <div className="feature flex flex-col w-[80vw] relative mt-8 text-[#E5E8EB]">
-          <div className="cards relative grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 lg:gap-11">
+          <div className="cards relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 lg:gap-11">
             <div className="card min-w-[100px] w-full flex flex-col justify-center items-start">
-              <div className="h-[80%]">
+              <div className="h-[80%] w-full">
                 <img
                   src={personalisedmealplan}
                   alt=""
@@ -84,7 +84,7 @@ const Hero = () => {
               </div>
             </div>
             <div className="card min-w-[100px] w-full flex flex-col justify-center items-start">
-              <div className="h-[80%]">
+              <div className="h-[80%] w-full">
                 <img
                   src={cfi}
                   alt=""
@@ -96,7 +96,7 @@ const Hero = () => {
               </div>
             </div>
             <div className="card min-w-[100px] w-full flex flex-col justify-center items-start">
-              <div className="h-[80%]">
+              <div className="h-[80%] w-full">
                 <img
                   src={iff}
                   alt=""
@@ -106,7 +106,7 @@ const Hero = () => {
               <div className="font-[500] mt-2 h-[20%] ">Indian Food Focus</div>
             </div>
             <div className="card min-w-[100px] w-full flex flex-col justify-center items-start">
-              <div className="h-[80%]">
+              <div className="h-[80%] w-full">
                 <img
                   src={chatbot}
                   alt=""
@@ -116,7 +116,7 @@ const Hero = () => {
               <div className="font-[500] mt-2 h-[20%] ">Chatbot Assistant</div>
             </div>
             <div className="card min-w-[100px] w-full flex flex-col justify-center items-start">
-              <div className="h-[80%]">
+              <div className="h-[80%] w-full">
                 <img
                   src={cmb}
                   alt=""
@@ -128,7 +128,7 @@ const Hero = () => {
               </div>
             </div>
             <div className="card min-w-[100px] w-full  flex flex-col justify-center items-start">
-              <div className="h-[80%]">
+              <div className="h-[80%] w-full">
                 <img
                   src={crs}
                   alt=""
@@ -141,7 +141,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <div className="text-3xl font-medium pt-6 pb-3 text-[#E5E8EB] m-auto w-[80%]">
+        <div className="text-xl sm:text-3xl font-medium pt-6 pb-3 text-[#E5E8EB] m-auto w-[80%]">
           Frequently asked questions
         </div>
         <Accordion items={items} />

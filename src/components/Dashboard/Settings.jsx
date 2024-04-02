@@ -63,13 +63,13 @@ const Settings = ({ user }) => {
   // ... rest of your component code (form and input fields)
 
   return (
-    <div className="w-[90%] h-fit relative flex flex-col items-center justify-center bg-[#23323d] p-5 px-10 mt-6 rounded-xl shadow-lg shadow-black">
-      <div className="text-2xl font-medium text-[#E5E8EB] py-3">
+    <div className="w-full md:w-[90%] h-fit relative flex flex-col items-center justify-center bg-[#23323d] p-5 sm:px-10 sm:mt-6 rounded-xl shadow-none md:shadow-lg shadow-black">
+      <div className="text-2xl font-medium text-[#E5E8EB] py-0 md:py-3">
         Update your preferences
       </div>
       <form className="w-full" onSubmit={handleSaveSettings}>
         {/* <div className=" w-full flex flex-col justify-center items-center bg-[#1a2329] rounded-xl shadow-lg shadow-black"> */}
-        <div className="w-[80%] flex flex-col justify-center m-auto  rounded-3xl px-8 py-2">
+        <div className=" w-full md:w-[80%] flex flex-col justify-center m-auto  rounded-3xl px-6 md:px-8 py-2">
           <div className="mt-3 ">
             <div className="flex flex-col">
               <label className="pb-1 font-medium text-[#E5E8EB]">Name:</label>
@@ -82,7 +82,7 @@ const Settings = ({ user }) => {
               />
             </div>
             <h1 className="text-lg text-[#E5E8EB] font-medium text-left ">
-              What's your primary goal?
+              What&apos;s your primary goal?
             </h1>
             <div className="mt-3  flex flex-row font-[500]  gap-2">
               <label className="flex justify-center items-center gap-3 px-2 py-1 w-fit rounded-lg border border-[#E5E8EB]">
@@ -113,7 +113,7 @@ const Settings = ({ user }) => {
           </div>
           <div className=" mt-3">
             <h1 className="text-lg text-[#E5E8EB] font-[600] relative  left-0 text-left ">
-              What's your preferences?
+              What&apos;s your preferences?
             </h1>
             <div className="mt-3  flex flex-row font-[500]  gap-2">
               <label className="flex justify-center items-center gap-3 px-2 py-1 w-fit rounded-lg border border-[#E5E8EB]">

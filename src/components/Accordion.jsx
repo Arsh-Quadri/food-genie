@@ -6,7 +6,7 @@ const AccordionItem = ({ title, children, isOpen, toggleAccordion }) => {
     <div className="accordion-item">
       <button
         type="button"
-        className="accordion-button rounded-lg p-3 text-left text-[18px] font-medium focus:outline-none"
+        className="accordion-button rounded-lg p-3 text-left text-sm sm:text-[18px] font-medium focus:outline-none"
         onClick={toggleAccordion}
       >
         <div className="flex justify-between items-center">
@@ -19,7 +19,7 @@ const AccordionItem = ({ title, children, isOpen, toggleAccordion }) => {
           />
         </div>
         <div
-          className={`accordion-content text-[16px] font-[400] ${
+          className={`accordion-content text-[12px] sm:text-[16px] font-[400] ${
             isOpen ? "open" : "closed"
           }`}
         >

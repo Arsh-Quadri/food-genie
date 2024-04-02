@@ -396,7 +396,7 @@ const DashboardMain = ({ user, setRecipe }) => {
 
       while (attempt <= MAX_RETRIES) {
         try {
-          console.log("Processing", mealType);
+          // console.log("Processing", mealType);
           if (calories?.bmi) {
             const model = genAI.getGenerativeModel({ model: "gemini-pro" });
             const prompt = generatePrompt(mealType); // Function to create meal-specific prompts
@@ -416,10 +416,10 @@ const DashboardMain = ({ user, setRecipe }) => {
             await set(mealRef, parsedJSON);
 
             mealCompletionStatus[mealType] = true;
-            console.log("Completed", mealType);
+            // console.log("Completed", mealType);
             break; // Exit the inner loop on successful processing
           } else {
-            console.log("no calories");
+            // console.log("no calories");
           }
         } catch (error) {
           if (
@@ -438,7 +438,7 @@ const DashboardMain = ({ user, setRecipe }) => {
             mealCompletionStatus[mealType] = false; // Reset completion status for retries
             setNewUser(false);
           } else {
-            console.error("Non-500 error:", error);
+            // console.error("Non-500 error:", error);
             // Implement different retry or fallback logic
           }
         }
@@ -447,7 +447,7 @@ const DashboardMain = ({ user, setRecipe }) => {
       }
 
       if (attempt > MAX_RETRIES) {
-        console.error("Failed to fetch data for", mealType, "after retries.");
+        console.warn("Failed to fetch data for", mealType, "after retries.");
       }
     }
   }
@@ -482,36 +482,40 @@ const DashboardMain = ({ user, setRecipe }) => {
   };
 
   return (
-    <div className="w-[90%] h-fit relative bg-[#23323d] p-5 px-10 mt-6 rounded-xl shadow-lg shadow-black">
+    <div className="w-full md:w-[90%] h-fit relative sm:bg-[#23323d] p-5 md:px-10 mt-0 sm:mt-6 rounded-xl shadow-none sm:shadow-lg shadow-black">
       <div className="flex justify-end gap-3">
         <div
-          className="bg-[#F5C754] hover:bg-[#f89f2b] px-4 py-2 rounded-xl cursor-pointer w-fit text-black font-medium"
+          className="bg-[#F5C754] hover:bg-[#f89f2b] text-sm sm:text-base px-4 py-2 rounded-xl cursor-pointer w-fit text-black font-medium"
           onClick={() => regenerateAllData(calories)}
         >
           Regenerate
         </div>
         <Link
           to="/dashboard/custom"
-          className="bg-[#94a3ba] hover:bg-[#7b90ad] px-4 py-2 rounded-xl cursor-pointer w-fit text-black font-medium"
+          className="bg-[#94a3ba] hover:bg-[#7b90ad] text-sm sm:text-base px-4 py-2 rounded-xl cursor-pointer w-fit text-black font-medium"
         >
           Make Custom
         </Link>
       </div>
       <hr className="w-full text-[#E5E8EB] my-4" />
-      <img src={bmi} alt="" className="w-[40%] absolute top-20 right-10" />
+      <img
+        src={bmi}
+        alt=""
+        className="w-[40%] min-w-[250px] sm:absolute top-20 right-10"
+      />
       {/* <div className="text-[#8a8e90] underline">suggested</div> */}
       {calories ? (
         <div className="">
-          <div className="text-4xl py-2 font-medium text-[#E5E8EB]">
+          <div className="text-3xl sm:text-4xl py-2 font-medium text-[#E5E8EB]">
             BMI CALCULATOR
           </div>
           <div className="text-[#9ea3a4] font-medium">
             Body Mass Index(BMI):{" "}
           </div>
-          <p className="text-4xl py-2 font-medium text-[#E5E8EB]">
+          <p className="text-3xl sm:text-4xl py-2 font-medium text-[#E5E8EB]">
             {calories.bmi} kg/m²
           </p>
-          <div className="font-medium text-xl items-start px-3 py-2 bg-[#121c24] text-[#E5E8EB] rounded-lg my-2 w-fit">
+          <div className="font-medium text-base sm:text-xl items-start px-3 py-2 bg-[#121c24] text-[#E5E8EB] rounded-lg my-2 w-fit">
             {calories.bmi >= 18.5 && calories.bmi <= 25 && (
               <div className="">Normal</div>
             )}
@@ -523,79 +527,97 @@ const DashboardMain = ({ user, setRecipe }) => {
               <div className="text-red-500">Under weight</div>
             )}
           </div>
-          <div className="text-green-400 font-medium">
+          <div className="text-green-400 text-sm sm:text-base font-medium">
             Healthy BMI range: 18.5 kg/m² - 25 kg/m².
           </div>
-          <div className="text-4xl py-2 pt-3 font-medium text-[#E5E8EB]">
+          <div className="text-3xl sm:text-4xl py-2 pt-3 font-medium text-[#E5E8EB]">
             CALORIES CALCULATOR
           </div>
-          <div className="font-medium text-[#9ea3a4]">
+          <div className="font-medium text-sm sm:text-base text-[#9ea3a4]">
             The results show a number of daily calorie estimates that can be
             used as a guideline for how many calories to consume each day to
             maintain, lose, or gain weight at a chosen rate.
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 my-5">
-            <div className="flex flex-col justify-center font-medium text-sm gap-2 items-start px-5 py-3 bg-[#121c24] text-[#E5E8EB] rounded-xl">
-              <p className="text-[#9ea3a4]">Maintain weight</p>
-              <p className="text-xl">{calories.caloriesMaintain} Calories</p>
-              <div className="text-green-400">
+            <div className="flex flex-col justify-center font-medium text-sm gap-2 items-start px-3 sm:px-5 py-3 bg-[#121c24] text-[#E5E8EB] rounded-xl">
+              <p className="text-[#9ea3a4] text-sm sm:text-base">
+                Maintain weight
+              </p>
+              <p className="text-base sm:text-xl">
+                {calories.caloriesMaintain} Calories
+              </p>
+              <div className="text-green-400 text-sm sm:text-base">
                 <FontAwesomeIcon icon={faArrowDown} /> -0 kg/week
               </div>
             </div>
             {calories.gainOrLose === "weightloss" ? (
               <>
-                <div className="flex flex-col justify-center font-medium text-sm gap-2 items-start px-5 py-3 bg-[#121c24] text-[#E5E8EB] rounded-xl">
-                  <p className="text-[#9ea3a4]">Mild weight loss</p>
-                  <p className="text-xl">
+                <div className="flex flex-col justify-center font-medium text-sm gap-2 items-start px-3 sm:px-5 py-3 bg-[#121c24] text-[#E5E8EB] rounded-xl">
+                  <p className="text-[#9ea3a4] text-sm sm:text-base">
+                    Mild weight loss
+                  </p>
+                  <p className="text-base sm:text-xl">
                     {calories.caloriesMildLoss} Calories
                   </p>
-                  <div className="text-green-400">
+                  <div className="text-green-400 text-sm sm:text-base">
                     <FontAwesomeIcon icon={faArrowDown} /> -0.25 kg/week
                   </div>
                 </div>
-                <div className="flex flex-col justify-center font-medium text-sm gap-2 items-start px-5 py-3 bg-[#121c24] text-[#E5E8EB] rounded-xl">
-                  <p className="text-[#9ea3a4]">weight loss</p>
-                  <p className="text-xl">
+                <div className="flex flex-col justify-center font-medium text-sm gap-2 items-start px-3 sm:px-5 py-3 bg-[#121c24] text-[#E5E8EB] rounded-xl">
+                  <p className="text-[#9ea3a4] text-sm sm:text-base">
+                    weight loss
+                  </p>
+                  <p className="text-base sm:text-xl">
                     {calories.caloriesWeightLoss} Calories
                   </p>
-                  <div className="text-green-400">
+                  <div className="text-green-400 text-sm sm:text-base">
                     <FontAwesomeIcon icon={faArrowDown} /> -0.5 kg/week
                   </div>
                 </div>
-                <div className="flex flex-col justify-center font-medium text-sm gap-2 items-start px-5 py-3 bg-[#121c24] text-[#E5E8EB] rounded-xl">
-                  <p className="text-[#9ea3a4]">Extreme weight loss</p>
-                  <p className="text-xl">
+                <div className="flex flex-col justify-center font-medium text-sm gap-2 items-start px-3 sm:px-5 py-3 bg-[#121c24] text-[#E5E8EB] rounded-xl">
+                  <p className="text-[#9ea3a4] text-sm sm:text-base">
+                    Extreme weight loss
+                  </p>
+                  <p className="text-base sm:text-xl">
                     {calories.caloriesExtremeLoss} Calories
                   </p>
-                  <div className="text-green-400">
+                  <div className="text-green-400 text-sm sm:text-base">
                     <FontAwesomeIcon icon={faArrowDown} /> -1 kg/week
                   </div>
                 </div>
               </>
             ) : (
               <>
-                <div className="flex flex-col justify-center font-medium text-sm gap-2 items-start px-5 py-3 bg-[#121c24] text-[#E5E8EB] rounded-xl">
-                  <p className="text-[#9ea3a4]">Mild weight gain</p>
-                  <p className="text-xl">
+                <div className="flex flex-col justify-center font-medium text-sm gap-2 items-start px-3 sm:px-5 py-3 bg-[#121c24] text-[#E5E8EB] rounded-xl">
+                  <p className="text-[#9ea3a4] text-sm sm:text-base">
+                    Mild weight gain
+                  </p>
+                  <p className="text-base sm:text-xl">
                     {calories.caloriesMildGain} Calories
                   </p>
-                  <div className="text-green-400">
+                  <div className="text-green-400 text-sm sm:text-base">
                     <FontAwesomeIcon icon={faArrowUp} /> +0.25 kg/week
                   </div>
                 </div>
-                <div className="flex flex-col justify-center font-medium text-sm gap-2 items-start px-5 py-3 bg-[#121c24] text-[#E5E8EB] rounded-xl">
-                  <p className="text-[#9ea3a4]">weight gain</p>
-                  <p className="text-xl">{calories.caloriesToGain} Calories</p>
-                  <div className="text-green-400">
+                <div className="flex flex-col justify-center font-medium text-sm gap-2 items-start px-3 sm:px-5 py-3 bg-[#121c24] text-[#E5E8EB] rounded-xl">
+                  <p className="text-[#9ea3a4] text-sm sm:text-base">
+                    weight gain
+                  </p>
+                  <p className="text-base sm:text-xl">
+                    {calories.caloriesToGain} Calories
+                  </p>
+                  <div className="text-green-400 text-sm sm:text-base">
                     <FontAwesomeIcon icon={faArrowUp} /> +0.5 kg/week
                   </div>
                 </div>
-                <div className="flex flex-col justify-center font-medium text-sm gap-2 items-start px-5 py-3 bg-[#121c24] text-[#E5E8EB] rounded-xl">
-                  <p className="text-[#9ea3a4]">Extreme weight gain</p>
-                  <p className="text-xl">
+                <div className="flex flex-col justify-center font-medium text-sm gap-2 items-start px-3 sm:px-5 py-3 bg-[#121c24] text-[#E5E8EB] rounded-xl">
+                  <p className="text-[#9ea3a4] text-sm sm:text-base">
+                    Extreme weight gain
+                  </p>
+                  <p className="text-base sm:text-xl">
                     {calories.caloriesExtremeGain} Calories
                   </p>
-                  <div className="text-green-400">
+                  <div className="text-green-400 text-sm sm:text-base">
                     <FontAwesomeIcon icon={faArrowUp} /> +1 kg/week
                   </div>
                 </div>
@@ -605,10 +627,14 @@ const DashboardMain = ({ user, setRecipe }) => {
         </div>
       ) : (
         <div className="h-[100vh] flex justify-start">
-          <img src={loader} alt="" className="w-20 h-20 ml-48 mt-20" />
+          <img
+            src={loader}
+            alt=""
+            className="w-20 h-20 mx-auto sm:ml-48 mt-0 sm:mt-20"
+          />
         </div>
       )}
-      <div className="text-4xl py-2 pt-3 font-medium text-[#E5E8EB]">
+      <div className="text-3xl sm:text-4xl py-2 pt-3 font-medium text-[#E5E8EB]">
         Recommended recipes
       </div>
       <Recommend
@@ -619,7 +645,7 @@ const DashboardMain = ({ user, setRecipe }) => {
         demomeals={demomeals}
         setNewUser={setNewUser}
       />
-      <div className="text-4xl py-2 pt-3 font-medium text-[#E5E8EB]">
+      <div className="text-3xl sm:text-4xl py-2 pt-3 font-medium text-[#E5E8EB]">
         Choose your meal composition
       </div>
       <Chart

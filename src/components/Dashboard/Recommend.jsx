@@ -1,7 +1,6 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
 import { useEffect, useState } from "react";
 import { database } from "../../../backend/firebase";
-import { get, ref, set } from "firebase/database";
+import { get, ref } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 
 const Recommend = ({
@@ -13,7 +12,6 @@ const Recommend = ({
   setNewUser,
 }) => {
   const userId = (user && user.uid) || null;
-  const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GENAI_KEY);
 
   useEffect(() => {
     async function fetchOrGenerateData() {
@@ -71,7 +69,7 @@ const Recommend = ({
     navigate(`/dashboard/recipes/${recipe.name}`);
   };
   return (
-    <div className="flex justify-center w-full gap-3 mb-5">
+    <div className="flex flex-col sm:flex-row justify-center w-full gap-3 mb-5">
       <div className="flex flex-col w-full h-fit gap-3">
         <div
           className="relative bgimage bg-cover cursor-pointer w-full h-32 mt-2 bg-center  rounded-xl"

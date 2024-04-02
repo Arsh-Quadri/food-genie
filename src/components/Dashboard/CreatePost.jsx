@@ -137,14 +137,14 @@ const CreatePost = ({ user }) => {
   };
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
   return (
-    <div className="w-[90%] h-fit relative bg-[#23323d] p-5 px-10 mt-6 rounded-xl shadow-lg shadow-black">
+    <div className="w-full md:w-[90%] h-fit relative bg-[#23323d] p-5 sm:px-10 mt-0 sm:mt-6 rounded-xl shadow-none md:shadow-lg shadow-black">
       <div className="text-2xl w-full font-medium py-3 text-[#E5E8EB]">
         CreatePost
       </div>
       <form onSubmit={handleSubmit}>
-        <div className="flex w-full gap-10 mb-3">
+        <div className="flex flex-col md:flex-row  w-full gap-5 md:gap-10 mb-3">
           <div
-            className="w-[50%] h-[150px] flex justify-center cursor-pointer items-center p-5 bg-slate-400 rounded-xl"
+            className="w-full md:w-[50%] h-[150px] flex justify-center cursor-pointer items-center p-5 bg-slate-400 rounded-xl"
             {...getRootProps()}
           >
             <input {...getInputProps()} className="" />
@@ -169,7 +169,7 @@ const CreatePost = ({ user }) => {
           </div>
 
           {postImageUrl && (
-            <div className="w-[50%]">
+            <div className="w-full md:w-[50%]">
               <p className="font-medium overflow-x-hidden text-sm pb-2 text-[#E5E8EB]">
                 {imageFile ? imageFile.name : "No Choosen File"}
               </p>

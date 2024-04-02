@@ -75,9 +75,11 @@ const Chart = ({ meals, caloriesMaintain, demomeals }) => {
 
   return (
     <>
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-5 my-5">
-        <div className="flex flex-col justify-center items-start gap-3  ">
-          <div className="text-xl text-[#E5E8EB]">Choose your Breakfast</div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full gap-3 mt-5">
+        <div className="flex flex-col justify-center items-start w-full gap-3 ">
+          <div className="text-base sm:text-xl text-[#E5E8EB]">
+            Choose your Breakfast
+          </div>
           <div className="border bg-[#121c24] border-[#E5E8EB] px-2 text-[#E5E8EB] text-sm font-medium rounded-lg w-full">
             <select
               value={breakfast.name}
@@ -102,8 +104,10 @@ const Chart = ({ meals, caloriesMaintain, demomeals }) => {
             </select>
           </div>
         </div>
-        <div className="flex flex-col justify-center items-start gap-3  ">
-          <div className="text-xl text-[#E5E8EB]">Choose your Lunch</div>
+        <div className="flex flex-col justify-center w-full items-start gap-3  ">
+          <div className="text-base sm:text-xl text-[#E5E8EB]">
+            Choose your Lunch
+          </div>
           <div className="border bg-[#121c24] border-[#E5E8EB] px-2 text-[#E5E8EB] text-sm font-medium rounded-lg w-full">
             <select
               value={lunch.name}
@@ -128,8 +132,10 @@ const Chart = ({ meals, caloriesMaintain, demomeals }) => {
             </select>
           </div>
         </div>
-        <div className="flex flex-col justify-center items-start gap-3  ">
-          <div className="text-xl text-[#E5E8EB]">Choose your Dinner</div>
+        <div className="flex flex-col justify-center items-start gap-3 w-full ">
+          <div className="text-base sm:text-xl text-[#E5E8EB]">
+            Choose your Dinner
+          </div>
           <div className="border bg-[#121c24] border-[#E5E8EB] px-2 text-[#E5E8EB] text-sm font-medium rounded-lg w-full">
             <select
               value={dinner.name}
@@ -155,7 +161,7 @@ const Chart = ({ meals, caloriesMaintain, demomeals }) => {
           </div>
         </div>
       </div>
-      <div className="w-full mt-10 text-2xl py-3 text-center font-medium text-[#E5E8EB]">
+      <div className="w-full mt-5 sm:mt-10 text-xl sm:text-2xl py-3 text-center font-medium text-[#E5E8EB]">
         Total Calories in Recipes vs Maintain weight Calories
       </div>
       <Bar options={option} data={data} className="mb-5" />

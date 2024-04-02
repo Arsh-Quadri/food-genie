@@ -16,15 +16,15 @@ const Dashboard = ({ user, setRecipe, recipe }) => {
 
   return (
     <div>
-      <div className="w-full flex justify-center py-5 bg-[#121c24]">
-        <div className="left sticky top-0 w-[20%] left-0 h-full ">
+      <div className="w-full flex justify-center py-5 bg-[#23323d] sm:bg-[#121c24]">
+        <div className="hidden md:block left sticky top-0 w-[20%] left-0 h-full ">
           <Sidebar />
         </div>
-        <div className="right w-[80%] right-0 h-fit flex justify-center items-start">
+        <div className="right w-full sm:w-[90%] md:w-[80%] right-0 h-fit flex justify-center items-start">
           {chatbotOpen && (
             <Chatbot setChatbotOpen={setChatbotOpen} user={user} />
           )}
-          <div className="fixed bottom-10 right-10 object-cover cursor-pointer z-10 ">
+          <div className="fixed bottom-5 md:bottom-10 right-5 md:right-10 object-cover cursor-pointer z-10 ">
             <img
               src={chatbot}
               alt=""

@@ -52,9 +52,9 @@ const Onboard = ({ user }) => {
 
   return (
     <div className="bg-[#121c24] w-full h-full flex justify-center items-center relative bckimg">
-      <div className=" w-[30%] px-1 py-1 flex flex-col items-center justify-center z-20 mt-8 mb-12  ">
+      <div className=" w-full sm:w-[65%] md:w-[40%] lg:w-[34%] flex flex-col items-center justify-center z-20 mt-0 mb-0 sm:mt-8 sm:mb-12  ">
         <form className="w-full" onSubmit={handleOnboardingSubmit}>
-          <div className=" w-full flex flex-col justify-center items-center bg-[#23323d] rounded-xl shadow-lg shadow-black">
+          <div className=" w-full flex flex-col justify-center items-center bg-[#23323d] rounded-none sm:rounded-xl shadow-none sm:shadow-lg shadow-black">
             <div className="w-full flex flex-col justify-center  rounded-3xl px-8 py-2">
               <div className="mt-3 ">
                 <div className="flex flex-col">
@@ -70,7 +70,7 @@ const Onboard = ({ user }) => {
                   />
                 </div>
                 <h1 className="text-lg text-[#E5E8EB] font-medium text-left ">
-                  What's your primary goal?
+                  What&apos;s your primary goal?
                 </h1>
                 <div className="mt-3  flex flex-row font-[500]  gap-2">
                   <label className="flex justify-center items-center gap-3 px-2 py-1 w-fit rounded-lg border border-[#E5E8EB]">
@@ -101,7 +101,7 @@ const Onboard = ({ user }) => {
               </div>
               <div className=" mt-3">
                 <h1 className="text-lg text-[#E5E8EB] font-[600] relative  left-0 text-left ">
-                  What's your preferences?
+                  What&apos;s your preferences?
                 </h1>
                 <div className="mt-3  flex flex-row font-[500]  gap-2">
                   <label className="flex justify-center items-center gap-3 px-2 py-1 w-fit rounded-lg border border-[#E5E8EB]">

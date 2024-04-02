@@ -89,7 +89,7 @@ const Chatbot = ({ setChatbotOpen, user }) => {
   };
 
   return (
-    <div className="fixed bottom-10 z-20 p-7 shadow-md shadow-gray-500 border border-gray-400 rounded-xl right-10 h-[400px] w-[300px] bg-gray-800 flex flex-col gap-5 text-[#E5E8EB]">
+    <div className="fixed bottom-5 md:bottom-10 z-20 p-7 shadow-md shadow-gray-500 border border-gray-400 rounded-xl right-5 md:right-10 h-[400px] w-[250px] sm:w-[300px] bg-gray-800 flex flex-col gap-5 text-[#E5E8EB]">
       <div
         className="absolute top-1 right-3 cursor-pointer"
         onClick={() => setChatbotOpen(false)}

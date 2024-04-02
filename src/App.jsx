@@ -37,7 +37,7 @@ function App() {
             const userData = snapshot.val();
             setIsOnboardingCompleted(userData?.isOnboardingCompleted); //
           } else {
-            console.log("No data found for user:", userId);
+            // console.log("No data found for user:", userId);
             setIsOnboardingCompleted(false);
             // Handle the case where data for the user doesn't exist
           }
